@@ -20,3 +20,8 @@ template2 = PromptTemplate(
     template='Write a 5-line summary of the given text: {text}',
     input_variables=['text']
 )
+persor=StrOutputParser()
+
+chain=template1|model|persor|template2|model|persor
+result=chain.invoke({'topic':'black hole'})
+print(result)
