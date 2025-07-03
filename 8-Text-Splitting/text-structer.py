@@ -1,9 +1,4 @@
-from langchain.text_splitter import CharacterTextSplitter
-from langchain_community.document_loaders import PyPDFLoader
-
-loader=PyPDFLoader(r'C:\Users\acer\Desktop\LangChain-MOdels\8-Text-Splitting\book_en.pdf')
-docs=loader.load()
-
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
 text="""
@@ -37,12 +32,12 @@ Only time will tell, but one thing is certain—IPL 2025 was a blockbuster crick
 
 """
 
-spliter=CharacterTextSplitter(
+spliter=RecursiveCharacterTextSplitter(
     chunk_size=100,
-    chunk_overlap=0,
-    separator=''
+    chunk_overlap=0
+    
 )
 
-result=spliter.split_documents(docs)
+result=spliter.split_text(text)
 print(len(result))
-print(result[0].page_content)
+print(result)
